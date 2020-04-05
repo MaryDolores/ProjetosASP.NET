@@ -1,0 +1,33 @@
+﻿
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in ViewBag.productsList)
+        {
+        <form action="@Url.Action("UpdateProducts")">
+            <tr>
+                <td><input type="hidden" value="@item.ProductId" name="pId"/> @item.ProductId</td>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.ProductAmount</td>
+                <td>
+                    @Ajax.ActionLink("Delete", "DeleteProducts", "Inventory", new {id = item.ProductId }, new AjaxOptions() { }, new
+               {
+                   @class = "btn btn-danger"
+               })
+                </td>
+            </tr>
+        </form>
+            
+        }
+    </tbody>
+</table>
